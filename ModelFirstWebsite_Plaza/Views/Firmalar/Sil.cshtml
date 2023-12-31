@@ -1,0 +1,57 @@
+﻿@model ModelFirstWebsite_Plaza.Models.Company
+
+@{
+    ViewBag.Title = "Sil";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyAdress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyAdress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlazaPlazaNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlazaPlazaNo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

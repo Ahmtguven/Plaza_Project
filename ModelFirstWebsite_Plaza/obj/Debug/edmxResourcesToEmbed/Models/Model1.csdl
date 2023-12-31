@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PlazaSet" EntityType="Model1.Plaza" />
+    <EntitySet Name="CompanySet" EntityType="Model1.Company" />
+    <EntitySet Name="DepartmentSet" EntityType="Model1.Department" />
+    <EntitySet Name="PersonnelSet" EntityType="Model1.Personnel" />
+    <AssociationSet Name="PlazaCompany" Association="Model1.PlazaCompany">
+      <End Role="Plaza" EntitySet="PlazaSet" />
+      <End Role="Company" EntitySet="CompanySet" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyDepartment" Association="Model1.CompanyDepartment">
+      <End Role="Company" EntitySet="CompanySet" />
+      <End Role="Department" EntitySet="DepartmentSet" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentPersonnel" Association="Model1.DepartmentPersonnel">
+      <End Role="Department" EntitySet="DepartmentSet" />
+      <End Role="Personnel" EntitySet="PersonnelSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Plaza">
+    <Key>
+      <PropertyRef Name="PlazaNo" />
+    </Key>
+    <Property Name="PlazaNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlazaName" Type="String" Nullable="false" />
+    <Property Name="PlazaAdress" Type="String" Nullable="false" />
+    <Property Name="CompanyPhone" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="CompanyNo" />
+    </Key>
+    <Property Name="CompanyNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" Nullable="false" />
+    <Property Name="CompanyAdress" Type="String" Nullable="false" />
+    <Property Name="CompanyPhone" Type="String" Nullable="false" />
+    <Property Name="PlazaPlazaNo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentNo" />
+    </Key>
+    <Property Name="DepartmentNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" />
+    <Property Name="DepartmentAdress" Type="String" Nullable="false" />
+    <Property Name="DepartmentPhone" Type="String" Nullable="false" />
+    <Property Name="CompanyCompanyNo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personnel">
+    <Key>
+      <PropertyRef Name="PersonnelNo" />
+    </Key>
+    <Property Name="PersonnelNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonnelName" Type="String" Nullable="false" />
+    <Property Name="PersonnelAdress" Type="String" Nullable="false" />
+    <Property Name="PersonnelPhone" Type="String" Nullable="false" />
+    <Property Name="DepartmentDepartmentNo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="PlazaCompany">
+    <End Type="Model1.Plaza" Role="Plaza" Multiplicity="1" />
+    <End Type="Model1.Company" Role="Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plaza">
+        <PropertyRef Name="PlazaNo" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="PlazaPlazaNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyDepartment">
+    <End Type="Model1.Company" Role="Company" Multiplicity="1" />
+    <End Type="Model1.Department" Role="Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="CompanyNo" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="CompanyCompanyNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentPersonnel">
+    <End Type="Model1.Department" Role="Department" Multiplicity="1" />
+    <End Type="Model1.Personnel" Role="Personnel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentNo" />
+      </Principal>
+      <Dependent Role="Personnel">
+        <PropertyRef Name="DepartmentDepartmentNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

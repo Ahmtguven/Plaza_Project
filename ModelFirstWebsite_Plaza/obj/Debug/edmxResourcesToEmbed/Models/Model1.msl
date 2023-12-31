@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="PlazaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Plaza)">
+        <MappingFragment StoreEntitySet="PlazaSet">
+          <ScalarProperty Name="PlazaNo" ColumnName="PlazaNo" />
+          <ScalarProperty Name="PlazaName" ColumnName="PlazaName" />
+          <ScalarProperty Name="PlazaAdress" ColumnName="PlazaAdress" />
+          <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanySet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Company)">
+        <MappingFragment StoreEntitySet="CompanySet">
+          <ScalarProperty Name="CompanyNo" ColumnName="CompanyNo" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyAdress" ColumnName="CompanyAdress" />
+          <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
+          <ScalarProperty Name="PlazaPlazaNo" ColumnName="PlazaPlazaNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DepartmentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Department)">
+        <MappingFragment StoreEntitySet="DepartmentSet">
+          <ScalarProperty Name="DepartmentNo" ColumnName="DepartmentNo" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentAdress" ColumnName="DepartmentAdress" />
+          <ScalarProperty Name="DepartmentPhone" ColumnName="DepartmentPhone" />
+          <ScalarProperty Name="CompanyCompanyNo" ColumnName="CompanyCompanyNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonnelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Personnel)">
+        <MappingFragment StoreEntitySet="PersonnelSet">
+          <ScalarProperty Name="PersonnelNo" ColumnName="PersonnelNo" />
+          <ScalarProperty Name="PersonnelName" ColumnName="PersonnelName" />
+          <ScalarProperty Name="PersonnelAdress" ColumnName="PersonnelAdress" />
+          <ScalarProperty Name="PersonnelPhone" ColumnName="PersonnelPhone" />
+          <ScalarProperty Name="DepartmentDepartmentNo" ColumnName="DepartmentDepartmentNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

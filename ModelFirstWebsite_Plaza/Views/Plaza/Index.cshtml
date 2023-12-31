@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ModelFirstWebsite_Plaza.Models.Plaza>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Yeni Plaza", "Ekle", null,new {@class="btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazaName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlazaAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyPhone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazaName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlazaAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyPhone)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Düzenle", new { id=item.PlazaNo }, new {@class= "btn btn-warning" })  |
+            @Html.ActionLink("Sil", "Sil", new { id=item.PlazaNo }, new { @class = "btn btn-danger btn-circle" })
+        </td>
+    </tr>
+}
+
+</table>
